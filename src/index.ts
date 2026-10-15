@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import * as fs from "fs";
 import path from "path";
@@ -62,6 +63,8 @@ async function start() {
   app.post(`/${returnPath}`, async (req, res) => {
     const { roomId } = req.query;
     const { message, name } = req.body;
+
+    console.log(roomId)
 
     const sendResponse = await sendMessage(roomId as string, `🛸${name}🛸 ${message}`);
     const sendResult = await sendResponse.json();
