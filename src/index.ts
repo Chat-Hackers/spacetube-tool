@@ -8,6 +8,7 @@ import { sendMessage } from "./requests";
 export const returnPath = "api";
 
 const port = 5054;
+const { spacetube_secret } = process.env;
 
 export const moduleRegistration = {
   id: "spacetube",
@@ -15,6 +16,7 @@ export const moduleRegistration = {
   url: `http://localhost:${port}`,
   emoji: "🛸",
   introduction: "React to a message with 🛸 to set up a connection to another chat",
+  secret: spacetube_secret,
   title: "Spacetube Chat Connection",
   description: "Forwards messages to chats in far away galaxies",
   event_types: [
