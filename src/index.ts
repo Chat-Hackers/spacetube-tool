@@ -18,7 +18,7 @@ export const moduleRegistration = {
   title: "Spacetube Chat Connection",
   description: "Forwards messages to chats in far away galaxies",
   event_types: [
-    "m.room.message", "m.reaction"
+    "m.reaction"
   ]
 }
 
