@@ -3,10 +3,13 @@ import * as fs from "fs";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import handleReaction from "./reaction";
+import { sendMessage } from "./requests";
+
+export const returnPath = "api";
 
 const port = 5054;
 
-const moduleRegistration = {
+export const moduleRegistration = {
   id: "spacetube",
   uuid: uuidv4(),
   url: `http://localhost:${port}`,
@@ -48,15 +51,17 @@ async function start() {
     res.send({ success: true, response });
   });
 
-  app.get("/api", async (req, res) => {
+  app.get(returnPath, async (req, res) => {
     const { roomId } = req.query;
 
     res.send({ success: true });
   })
 
-  app.post("/api", async (req, res) => {
+  app.post(`/${returnPath}`, async (req, res) => {
     const { roomId } = req.query;
-    const { url } = req.body;
+    const { message, name } = req.body;
+
+    sendMessage(roomId as string, `🛸${name}🛸 ${message}`);
 
     res.send({ success: true });
   })
