@@ -10,7 +10,7 @@ async function sendToSpacetube(event: MatrixEvent) {
 
 export default function handleReaction(event: MatrixEvent) {
     const reactionInfo = event.content["m.relates_to"];
-    const eventFromReaction = event.prevEvent;
+    const eventFromReaction = { ...event.prevEvent, displayname: event.displayname };
 
     const reactionEmoji = reactionInfo.key.trim();
 
