@@ -51,7 +51,7 @@ async function start() {
     res.send({ success: true, response });
   });
 
-  app.get(returnPath, async (req, res) => {
+  app.get(`/${returnPath}`, async (req, res) => {
     const { roomId } = req.query;
 
     res.send({ success: true });

@@ -10,7 +10,7 @@ export function postSpacetubeEvent(event: MatrixEvent) {
         method: "POST",
         body: JSON.stringify({
             ...event,
-            origin: `${baseUrl}/${moduleRegistration.id}${returnPath}`
+            origin: `${baseUrl}/${moduleRegistration.id}/${returnPath}`
         }),
         headers: {
             "Content-type": "application/json"
