@@ -61,7 +61,10 @@ async function start() {
     const { roomId } = req.query;
     const { message, name } = req.body;
 
-    sendMessage(roomId as string, `🛸${name}🛸 ${message}`);
+    const sendResponse = await sendMessage(roomId as string, `🛸${name}🛸 ${message}`);
+    const sendResult = await sendResponse.json();
+
+    console.log(sendResult);
 
     res.send({ success: true });
   })
