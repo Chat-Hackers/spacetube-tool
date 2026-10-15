@@ -61,8 +61,7 @@ async function start() {
   })
 
   app.post(`/${returnPath}`, async (req, res) => {
-    const { roomId } = req.query;
-    const { message, name } = req.body;
+    const { roomId, message, name } = req.body;
 
     console.log(roomId)
 
