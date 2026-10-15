@@ -63,8 +63,6 @@ async function start() {
   app.post(`/${returnPath}`, async (req, res) => {
     const { roomId, message, name } = req.body;
 
-    console.log(roomId)
-
     const sendResponse = await sendMessage(roomId as string, `🛸${name}🛸 ${message}`);
     const sendResult = await sendResponse.json();
 
