@@ -9,7 +9,8 @@ export default function App() {
   const [tubeConnection, setTubeConnection] = useState("");
 
   const loadConnection = async () => {
-    const connection = await getConnection(roomId as string);
+    const connectionResponse = await getConnection(roomId as string);
+    const connection = connectionResponse.json();
     console.log(connection);
   };
 

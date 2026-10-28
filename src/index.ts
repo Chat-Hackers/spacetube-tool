@@ -74,17 +74,19 @@ async function start() {
   app.get("/api", async (req, res) => {
     const { roomId } = req.query;
 
-    const connection = await getConnection(roomId as string);
+    const connectionResponse = await getConnection(roomId as string);
+    const connection = await connectionResponse.json();
 
-    res.send(connection);
+    res.send({ sucess: true, connection });
   })
 
   app.delete("/api", async (req, res) => {
     const { roomId } = req.query;
 
-    await deleteConnection(roomId as string);
+    const deleteResponse = await deleteConnection(roomId as string);
+    const deletion = await deleteResponse.json();
 
-    res.send({ success: true });
+    res.send({ success: true, deletion });
   })
 
   app.listen(port);
