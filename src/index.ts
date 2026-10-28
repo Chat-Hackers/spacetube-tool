@@ -77,6 +77,8 @@ async function start() {
     const connectionResponse = await getConnection(roomId as string);
     const connection = await connectionResponse.json();
 
+    console.log(connection)
+
     res.send({ sucess: true, connection });
   })
 
