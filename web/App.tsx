@@ -10,7 +10,7 @@ export default function App() {
 
   const loadConnection = async () => {
     const connectionResponse = await getConnection(roomId as string);
-    const connection = connectionResponse.json();
+    const connection = await connectionResponse.json();
     console.log(connection);
   };
 
