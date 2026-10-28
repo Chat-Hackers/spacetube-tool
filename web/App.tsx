@@ -10,8 +10,10 @@ export default function App() {
 
   const loadConnection = async () => {
     const connectionResponse = await getConnection(roomId as string);
-    const connection = await connectionResponse.json();
-    console.log(connection);
+    const connectionResult = await connectionResponse.json();
+    if (connectionResult.success) {
+      setTubeConnection(connectionResult.connection);
+    }
   };
 
   useEffect(() => {
@@ -20,6 +22,7 @@ export default function App() {
 
   const removeConnection = async () => {
     await deleteConnection(roomId as string);
+    loadConnection();
   };
 
   return (
