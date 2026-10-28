@@ -4,7 +4,7 @@ import * as fs from "fs";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import handleReaction from "./reaction";
-import { sendMessage } from "./requests";
+import { deleteConnection, getConnection, sendMessage } from "./requests";
 
 export const returnPath = "api";
 
@@ -67,6 +67,22 @@ async function start() {
     const sendResult = await sendResponse.json();
 
     console.log(sendResult);
+
+    res.send({ success: true });
+  })
+
+  app.get("/api", async (req, res) => {
+    const { roomId } = req.query;
+
+    const connection = await getConnection(roomId as string);
+
+    res.send(connection);
+  })
+
+  app.delete("/api", async (req, res) => {
+    const { roomId } = req.query;
+
+    await deleteConnection(roomId as string);
 
     res.send({ success: true });
   })
