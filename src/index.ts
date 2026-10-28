@@ -74,10 +74,12 @@ async function start() {
   app.get("/api", async (req, res) => {
     const { roomId } = req.query;
 
+    console.log("connection requested for ", roomId)
+
     const connectionResponse = await getConnection(roomId as string);
     const connection = await connectionResponse.json();
 
-    console.log(connection)
+    console.log("connection", connection)
 
     res.send({ sucess: true, connection });
   })
