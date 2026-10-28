@@ -79,9 +79,10 @@ async function start() {
     const connectionResponse = await getConnection(roomId as string);
     const connection = await connectionResponse.json();
 
-    console.log("connection", connection)
-
-    res.send({ success: true, connection });
+    if ((connection as { success: boolean }).success)
+      res.send({ success: true, connection });
+    else
+      res.send({ success: false, messsage: "no connection for this room id" });
   })
 
   app.delete("/api/connection", async (req, res) => {
