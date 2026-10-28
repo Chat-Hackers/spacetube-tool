@@ -81,7 +81,7 @@ async function start() {
 
     console.log("connection", connection)
 
-    res.send({ sucess: true, connection });
+    res.send({ success: true, connection });
   })
 
   app.delete("/api/connection", async (req, res) => {
