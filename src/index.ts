@@ -11,7 +11,7 @@ export const returnPath = "api";
 const port = 5054;
 const { spacetube_secret } = process.env;
 
-export const moduleRegistration = {
+export const toolRegistration = {
   id: "spacetube",
   uuid: uuidv4(),
   url: `http://localhost:${port}`,
@@ -20,13 +20,15 @@ export const moduleRegistration = {
   secret: spacetube_secret,
   title: "Spacetube Chat Connection",
   description: "Forwards messages to chats in far away galaxies",
-  event_types: [
-    "m.reaction"
-  ]
+  event_types: {
+    active: [
+      "m.reaction"
+    ]
+  }
 }
 
 function generateRegistrationFile() {
-  fs.writeFileSync(`./${moduleRegistration.id}.json`, JSON.stringify(moduleRegistration, null, 2));
+  fs.writeFileSync(`./${toolRegistration.id}.json`, JSON.stringify(toolRegistration, null, 2));
 }
 
 async function start() {
