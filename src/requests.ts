@@ -1,12 +1,12 @@
 import { MatrixEvent } from "../types";
-import { moduleRegistration, returnPath } from "./index";
+import { toolRegistration, returnPath } from "./index";
 
 const { spacetube_url, dashboard_url, spacetube_secret } = process.env;
 
 const baseUrl = dashboard_url?.includes("localhost") ? `http://${dashboard_url}` : `https://${dashboard_url}`;
 
 export function postSpacetubeEvent(event: MatrixEvent) {
-    const origin = `${baseUrl}/${moduleRegistration.id}/${returnPath}`;
+    const origin = `${baseUrl}/${toolRegistration.id}/${returnPath}`;
 
     return fetch(`${spacetube_url}/chathackers`, {
         method: "POST",
@@ -33,13 +33,13 @@ export async function sendMessage(roomId: string, message: string) {
 }
 
 export async function getConnection(roomId: string) {
-    const origin = `${baseUrl}/${moduleRegistration.id}/${returnPath}`;
+    const origin = `${baseUrl}/${toolRegistration.id}/${returnPath}`;
 
     return fetch(`${spacetube_url}/chathackers/setup?roomId=${roomId}&origin=${origin}`)
 }
 
 export async function deleteConnection(roomId: string) {
-    const origin = `${baseUrl}/${moduleRegistration.id}/${returnPath}`;
+    const origin = `${baseUrl}/${toolRegistration.id}/${returnPath}`;
 
     return fetch(`${spacetube_url}/chathackers/setup`, {
         method: "DELETE",
