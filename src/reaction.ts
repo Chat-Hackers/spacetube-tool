@@ -11,6 +11,7 @@ async function sendToSpacetube(event: MatrixEvent) {
 }
 
 export default function handleReaction(event: MatrixEvent) {
+    console.log("handling reaction")
     const reactionInfo = event.content["m.relates_to"];
     const eventFromReaction = { ...event.prevEvent, displayname: event.displayname };
 
