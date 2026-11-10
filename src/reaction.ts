@@ -16,6 +16,8 @@ export default function handleReaction(event: MatrixEvent) {
 
     const reactionEmoji = reactionInfo.key.trim();
 
+    console.log("reaction emoji", reactionEmoji)
+
     if (reactionEmoji.includes("🛸")) {
         return sendToSpacetube(eventFromReaction);
     }
