@@ -5,6 +5,8 @@ async function sendToSpacetube(event: MatrixEvent) {
     const spacetubeResponse = await postSpacetubeEvent(event);
     const spacetubeResult = await spacetubeResponse.json();
 
+    console.log("spacetube result", spacetubeResult)
+
     return spacetubeResult;
 }
 
